@@ -1,0 +1,70 @@
+/* HowItWorks.css */
+.how-it-works-section {
+  /* background-color: #fff; */
+  padding: 5rem 2rem;
+  overflow: hidden; /* Pour éviter les problèmes de dépassement avec les animations */
+}
+
+.how-it-works-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.how-it-works-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #4c1d95;
+  margin-bottom: 3rem;
+}
+
+.how-it-works-steps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.how-it-works-step {
+  flex: 1 1 300px;
+  background-color: #f9f5ff;
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out; /* Transition pour l'effet de survol */
+}
+
+.how-it-works-step:hover {
+  transform: translateY(-5px); /* Léger décalage vers le haut au survol */
+}
+
+.how-it-works-icon {
+  font-size: 3rem;
+  color: #7c3aed;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.how-it-works-step h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #444;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.how-it-works-step p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Media Queries pour la responsivité */
+@media (max-width: 768px) {
+  .how-it-works-steps {
+    flex-direction: column;
+    align-items: center;
+  }
+}

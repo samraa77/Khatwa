@@ -1,8 +1,10 @@
 /* Structure principale */
 .navbar {
-  background-color: #4c1d95;
+  background-color: #4B0082;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   padding: 1rem 2rem;
+  margin: 1rem 2rem;
+  border-radius: 30px;
   position: relative;
   z-index: 100;
   transition: background-color 0.3s ease;
@@ -30,6 +32,11 @@
 .navbar-logo {
   height: 36px;
   filter: brightness(0) invert(1);
+  transition: transform 0.3s ease-in-out; /* Ajout de la transition */
+}
+
+.navbar-logo:hover {
+  transform: rotate(10deg); /* Rotation au survol */
 }
 
 .navbar-brand {
@@ -44,6 +51,9 @@
   gap: 2rem;
   justify-content: center;
   flex-grow: 1;
+  transition: all 0.3s ease-in-out;
+  max-height: 200px; /* Pour l'animation de déploiement */
+  overflow: hidden; /* Pour cacher le contenu dépassant */
 }
 
 .navbar-center a {
@@ -51,11 +61,13 @@
   color: #ffffff;
   font-weight: 500;
   font-size: 1rem;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, border-bottom 0.3s ease; /* Transition pour la couleur et le soulignement */
+  border-bottom: 2px solid transparent; /* Soulignement transparent par défaut */
 }
 
 .navbar-center a:hover {
   color: #c4b5fd;
+  border-bottom: 2px solid #c4b5fd; /* Soulignement au survol */
 }
 
 /* Icônes à droite */
@@ -71,6 +83,11 @@
   width: 22px;
   cursor: pointer;
   filter: brightness(0) invert(1);
+  transition: transform 0.3s ease; /* Ajout de la transition */
+}
+
+.icon-colored:hover {
+  transform: scale(1.2); /* Légère augmentation de taille au survol */
 }
 
 /* Dropdown de langue */
@@ -85,6 +102,9 @@
   padding: 0.5rem 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .lang-dropdown li {
@@ -97,6 +117,11 @@
 .lang-dropdown li:hover {
   color: #facc15;
   font-weight: bold;
+}
+
+.navbar-right:hover .lang-dropdown {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Responsive (Mobile) */
@@ -112,9 +137,25 @@
     align-items: flex-start;
     width: 100%;
     margin-top: 1rem;
+    max-height: 0; /* Initialise à 0 pour l'animation */
+    overflow: hidden;
+  }
+
+  .navbar-center.open {
+    max-height: 500px; /* Ajustez selon le contenu */
   }
 
   .navbar-right {
     margin-top: 1rem;
   }
+
+  .navbar-toggle {
+    display: block;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+}
+
+.navbar-toggle {
+  display: none; /* Caché par défaut sur les écrans plus grands */
 }

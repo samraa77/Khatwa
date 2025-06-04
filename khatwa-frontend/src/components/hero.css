@@ -1,8 +1,8 @@
+/* Hero.css */
 .hero {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #7c3aed17;
   padding: 4rem 18rem 6rem 5rem;
   flex-wrap: wrap;
 }
@@ -13,10 +13,11 @@
 }
 
 .hero-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: #111827;
+  background: linear-gradient(to right, #6666ff, #ee99ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2.5em; /* Adjust as needed */
+  font-weight: bold;
 }
 
 .hero-desc {
@@ -105,7 +106,6 @@
   position: relative;
   width: 300px;
   height: 293px;
-
 }
 
 /* Image du téléphone */
@@ -135,7 +135,9 @@
   width: 70px;
   filter: brightness(0) invert(1); /* rend le logo blanc s'il est noir */
 }
- @media (max-width: 768px) {
+
+/* 📱 Responsivité */
+@media (max-width: 768px) {
   .hero {
     flex-direction: column;
     align-items: center;
@@ -167,46 +169,43 @@
     justify-content: center;
   }
 
-.hero-image {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 360px;
-  margin: 0 auto;
-}
+  .hero-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+  }
 
-.phone-frame {
-  width: 100%;
-  max-width: 360px;
-  position: relative;
-  z-index: 1;
-}
+  .phone-frame {
+    width: 100%;
+    max-width: 360px;
+    position: relative;
+    z-index: 1;
+  }
 
+  .phone-overlay {
+    position: absolute;
+    top: 0.5%;
+    left: 51%;
+    transform: translateX(-50%);
+    width: 42%;
+    height: 92%;
+    background-color: #7c3aed;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.phone-overlay {
-  position: absolute;
-  top: 0.5%;
-  left: 51%;
-  transform: translateX(-50%);
-  width: 42%;
-  height: 92%;
-  background-color: #7c3aed;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .logo-on-phone {
+    width: 48px;
+    filter: brightness(0) invert(1);
+  }
 
-
- .logo-on-phone {
-  width: 48px;
-  filter: brightness(0) invert(1);
-}
-
-
-   .button-86 {
+  .button-86 {
     width: 100%;
     max-width: 260px;
   }
@@ -216,3 +215,4 @@
     align-items: center;
   }
 }
+

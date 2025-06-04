@@ -1,5 +1,5 @@
+/* Contact.css */
 .contact-section {
-  background-color: #f9f5ff;
   padding: 5rem 1rem;
   display: flex;
   justify-content: center;
@@ -10,26 +10,28 @@
   border-radius: 12px;
   padding: 3rem;
   width: 100%;
-  max-width: 600px;
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.05);
+  max-width: 700px; /* Augmentation de la largeur maximale */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Réduction de l'intensité de l'ombre */
 }
 
 .contact-header h2 {
-  font-size: 2rem;
-  color: #1f2937;
-  margin-bottom: 0.5rem;
+  font-size: 2.3rem; /* Augmentation de la taille de la police */
+  color: #4c1d95; /* Violet foncé (header/footer) */
+  margin-bottom: 0.7rem; /* Réduction de l'espacement */
+  text-align: center; /* Centrage du titre */
 }
 
 .contact-header p {
-  color: #4c1d95;
-  margin-bottom: 2rem;
-  font-size: 1rem;
+  color: #555; /* Assombrissement de la couleur */
+  margin-bottom: 2.3rem; /* Augmentation de l'espacement */
+  font-size: 1.1rem; /* Augmentation de la taille de la police */
+  text-align: center; /* Centrage du paragraphe */
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.8rem; /* Augmentation de l'espacement */
 }
 
 .input-group {
@@ -39,30 +41,31 @@
 
 .input-group label {
   font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: #1f2937;
+  margin-bottom: 0.7rem; /* Augmentation de l'espacement */
+  color: #333; /* Assombrissement de la couleur */
+  font-size: 1.1rem; /* Augmentation de la taille de la police */
 }
 
 .input-group input,
 .input-group textarea {
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  border: 1px solid #c4b5fd;
-  border-radius: 8px;
-  color: #1f2937;
-  transition: border 0.3s ease;
+  padding: 1rem 1.2rem; /* Augmentation de l'espacement intérieur */
+  font-size: 1.1rem; /* Augmentation de la taille de la police */
+  border: 2px solid #c4b5fd; /* Augmentation de l'épaisseur de la bordure */
+  border-radius: 10px; /* Adoucissement des angles */
+  color: #333; /* Assombrissement de la couleur */
+  transition: border 0.3s ease, box-shadow 0.3s ease; /* Ajout d'une transition pour l'ombre */
 }
 
 .input-group input:focus,
 .input-group textarea:focus {
   outline: none;
   border-color: #7c3aed;
-  box-shadow: 0 0 0 2px #c4b5fd66;
+  box-shadow: 0 0 0 3px #e9d8fd; /* Augmentation de l'épaisseur de l'ombre */
 }
 
 textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 150px; /* Augmentation de la hauteur minimale */
 }
 
 .btn-submit {
@@ -70,13 +73,29 @@ textarea {
   color: white;
   font-weight: bold;
   border: none;
-  border-radius: 8px;
-  padding: 0.9rem 1.5rem;
-  font-size: 1rem;
+  border-radius: 10px; /* Adoucissement des angles */
+  padding: 1.1rem 1.7rem; /* Augmentation de l'espacement intérieur */
+  font-size: 1.1rem; /* Augmentation de la taille de la police */
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Ajout d'une transition pour la transformation */
 }
 
 .btn-submit:hover {
   background-color: #4c1d95;
+  transform: scale(1.03); /* Léger agrandissement au survol */
+}
+
+/* Media Queries pour la responsivité */
+@media (max-width: 768px) {
+  .contact-box {
+    padding: 2rem;
+  }
+
+  .contact-header h2 {
+    font-size: 2rem;
+  }
+
+  .contact-header p {
+    font-size: 1rem;
+  }
 }

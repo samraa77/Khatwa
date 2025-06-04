@@ -1,67 +1,43 @@
+/* About.css */
 .about-section {
-  background-color: #ffffff;
-  padding: 6rem 2rem 0rem 2rem;
+  padding: 4rem 2rem;
+  overflow: hidden; /* Pour éviter les dépassements d'animation */
 }
 
 .about-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 3rem;
-  align-items: flex-start;
-  justify-content: space-between;
   max-width: 1200px;
   margin: auto;
 }
 
-.text-zone {
-  flex: 1 1 500px;
+.about-header {
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
 .about-title {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #1a1a1a;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #4c1d95; /* Violet foncé (header/footer) */
   margin-bottom: 1rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .about-desc {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.7;
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.8;
   margin-bottom: 2rem;
+  text-align: justify;
+  max-width: 700px;
+  margin: 0 auto 2rem;
 }
 
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-}
-
-.stat-card {
-  background-color: white;
-  border-radius: 12px;
-  padding: 1rem;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-}
-
-.stat-icon {
-  font-size: 1.5rem;
-  color: #7c3aed;
-  margin-bottom: 0.5rem;
-  display: block;
-}
-
-.stat-card h3 {
-  font-size: 1.3rem;
-  color: #7c3aed;
-  margin: 0;
-}
-
-.stat-card p {
-  font-size: 0.9rem;
-  color: #444;
-  margin: 0;
+.about-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  align-items: flex-start;
+  justify-content: space-around;
 }
 
 .chart-zone {
@@ -69,12 +45,69 @@
   min-width: 300px;
 }
 
+.stats-grid {
+  flex: 1 1 300px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-icon {
+  font-size: 2rem;
+  color: #7c3aed; /* Violet principal */
+  margin-bottom: 0.7rem;
+  display: block;
+}
+
+.stat-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #444;
+  margin: 0;
+}
+
+.stat-card p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0;
+}
+
+/* Styles pour le graphique */
+.recharts-responsive-container {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Media queries pour la responsivité */
 @media (max-width: 768px) {
-  .about-content {
+  .about-header {
+    text-align: left;
+  }
+
+  .about-body {
     flex-direction: column;
+    align-items: stretch;
   }
 
   .stats-grid {
     grid-template-columns: 1fr;
+  }
+
+  .chart-zone {
+    min-width: auto;
   }
 }

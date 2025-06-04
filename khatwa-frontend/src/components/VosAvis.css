@@ -1,0 +1,119 @@
+
+/* About.css (Ajouts pour le feedback) */
+.feedback-section {
+  padding: 2rem;
+  border-radius: 10px;
+  margin-top: 2rem;
+}
+
+.feedback-title {
+  font-size: 1.7rem; /* Augmentation de la taille du titre */
+  color: #4c1d95;
+  margin-bottom: 1.3rem; /* Augmentation de l'espacement */
+  text-align: center;
+}
+
+.feedback-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem; /* Augmentation de l'espacement */
+}
+
+/* Style de la carte (commun au formulaire et aux avis) */
+.card {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.feedback-form {
+  flex: 1 1 300px;
+  transition: transform 0.3s ease-in-out; /* Ajout d'une transition */
+}
+
+.feedback-form:hover {
+  transform: translateY(-3px); /* Léger décalage au survol */
+}
+
+.feedback-form h3 {
+  font-size: 1.3rem;
+  color: #555;
+  margin-bottom: 1.2rem; /* Augmentation de l'espacement */
+}
+
+.rating {
+  display: flex;
+  gap: 0.7rem;
+  margin-bottom: 1.3rem; /* Augmentation de l'espacement */
+}
+
+.star {
+  font-size: 1.7rem;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.star.active {
+  color: #facc15;
+}
+
+.feedback-form textarea {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1.2rem; /* Augmentation de l'espacement */
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Adoucissement des angles */
+  resize: vertical;
+  font-size: 1rem; /* Augmentation de la taille de la police */
+}
+
+.submit-button {
+  background-color: #7c3aed;
+  color: white;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 8px; /* Adoucissement des angles */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s; /* Ajout d'une transition */
+  font-size: 1.1rem; /* Augmentation de la taille de la police */
+}
+
+.submit-button:hover {
+  background-color: #632bb1;
+  transform: scale(1.05); /* Léger agrandissement au survol */
+}
+
+.reviews {
+  flex: 1 1 300px;
+}
+
+.reviews h3 {
+  font-size: 1.3rem;
+  color: #555;
+  margin-bottom: 1.2rem; /* Augmentation de l'espacement */
+}
+
+.review {
+  margin-bottom: 1.3rem; /* Augmentation de l'espacement */
+  padding: 0.7rem;
+  border-bottom: 1px solid #eee;
+}
+
+.review-rating {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.7rem; /* Augmentation de l'espacement */
+}
+
+.review-rating .star {
+  font-size: 1.2rem;
+}
+
+/* Media Queries pour la responsivité */
+@media (max-width: 768px) {
+  .feedback-container {
+    flex-direction: column;
+  }
+}

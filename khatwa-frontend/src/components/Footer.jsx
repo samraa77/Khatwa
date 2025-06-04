@@ -1,35 +1,39 @@
 import React from 'react';
-import './footer.css';
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
+import './Footer.css';
+import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 export default function Footer() {
+  const fadeIn = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeInOut' } },
+  };
+
   return (
     <footer className="footer">
       <div className="footer-container">
-
-        <div className="footer-left">
-          <img src="/images/logoKhatwa.svg" alt="Khatwa Logo" className="footer-logo" />
+        <motion.div className="footer-left" variants={fadeIn} initial="hidden" animate="visible">
+          <img src="/images/logoKhatwa.svg" alt="Logo" className="footer-logo" />
           <span className="footer-brand">Khatwa</span>
-        </div>
+        </motion.div>
 
-        <div className="footer-links">
-          <a href="#">Accueil</a>
-          <a href="#">À propos</a>
-          <a href="#">Contact</a>
-        </div>
+        <motion.div className="footer-links" variants={fadeIn} initial="hidden" animate="visible" transition={{ delay: 0.2 }}>
+          <a href="#hero">Accueil</a>
+          <a href="#about">À propos</a>
+          <a href="#how-it-works">Fonctionnement</a>
+          <a href="#vos-avis">Vos avis</a>
+          <a href="#contact">Contact</a>
+        </motion.div>
 
-        <div className="footer-social">
-          <a href="#"><FaYoutube /></a>
-          <a href="#"><FaFacebookF /></a>
-          <a href="#"><FaTwitter /></a>
-          <a href="#"><FaInstagram /></a>
-          <a href="#"><FaLinkedin /></a>
-        </div>
+        <motion.div className="footer-social" variants={fadeIn} initial="hidden" animate="visible" transition={{ delay: 0.4 }}>
+          <a href="#" aria-label="Facebook"><FaFacebook /></a>
+          <a href="#" aria-label="Twitter"><FaTwitter /></a>
+          <a href="#" aria-label="Instagram"><FaInstagram /></a>
+        </motion.div>
       </div>
-
-      <div className="footer-bottom">
-        © {new Date().getFullYear()} Khatwa. Tous droits réservés.
-      </div>
+      <motion.div className="footer-bottom" variants={fadeIn} initial="hidden" animate="visible" transition={{ delay: 0.6 }}>
+        &copy; 2025 Khatwa. Tous droits réservés.
+      </motion.div>
     </footer>
   );
 }

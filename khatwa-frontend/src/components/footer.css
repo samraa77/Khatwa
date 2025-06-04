@@ -1,8 +1,10 @@
+/* Footer.css */
 .footer {
   background-color: #4c1d95;
   color: white;
   padding: 2rem 1rem 1rem;
   font-family: 'Segoe UI', sans-serif;
+  overflow: hidden; /* Pour éviter les problèmes de dépassement avec les animations */
 }
 
 .footer-container {
@@ -68,4 +70,16 @@
   margin-top: 2rem;
   font-size: 0.8rem;
   color: #d1c4f5;
+}
+
+/* Media Queries pour la responsivité */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-left {
+    justify-content: center;
+  }
 }

@@ -1,5 +1,7 @@
+// Navbar.jsx
 import React, { useState } from 'react';
 import './navbar.css';
+import { FaBars, FaGlobe, FaSun, FaMoon } from 'react-icons/fa'; // Exemple avec React Icons
 
 export default function Navbar({ darkMode, setDarkMode }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,27 +17,22 @@ export default function Navbar({ darkMode, setDarkMode }) {
         </div>
 
         {/* Liens centrés */}
-        <nav className="navbar-center">
-          <a href="#">Accueil</a>
-          <a href="#">À propos</a>
-          <a href="#">Contact</a>
+        <nav className={`navbar-center ${isOpen ? 'open' : ''}`}>
+          <a href="#hero">Accueil</a>
+          <a href="#about">À propos</a>
+          <a href="#how-it-works">Fonctionnement</a>
+          <a href="#vos-avis">Vos avis</a>
+          <a href="#contact">Contact</a>
         </nav>
 
         {/* Icônes à droite */}
         <div className="navbar-right">
-          <img
-            src="/images/lang.svg"
-            alt="Langue"
-            className="icon-colored"
-            onClick={() => setShowLang(!showLang)}
-          />
-           <img
-        src={darkMode ? "/images/sun.svg" : "/images/dark.svg"}
-        alt="Toggle Theme"
-        className="icon-colored"
-        onClick={() => setDarkMode(!darkMode)}
-      />
-
+          <FaGlobe className="icon-colored" onClick={() => setShowLang(!showLang)} />
+          {darkMode ? (
+            <FaSun className="icon-colored" onClick={() => setDarkMode(!darkMode)} />
+          ) : (
+            <FaMoon className="icon-colored" onClick={() => setDarkMode(!darkMode)} />
+          )}
           {showLang && (
             <ul className="lang-dropdown">
               <li>🇫🇷 Français</li>
@@ -43,6 +40,10 @@ export default function Navbar({ darkMode, setDarkMode }) {
               <li>🇲🇦 عربي</li>
             </ul>
           )}
+        </div>
+        {/* Menu burger pour mobile */}
+        <div className="navbar-toggle" onClick={() => setIsOpen(!isOpen)}>
+          <FaBars className="icon-colored" />
         </div>
       </div>
     </header>
