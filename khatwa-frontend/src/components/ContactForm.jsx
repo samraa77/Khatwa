@@ -14,7 +14,7 @@ export default function ContactSection() {
   };
 
   return (
-   <section class="contact-section">
+   <section class="contact-section" id="contact">
   <motion.div
     class="contact-box"
     variants={fadeIn}

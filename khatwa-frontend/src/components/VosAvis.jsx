@@ -36,7 +36,7 @@ export default function VosAvis() {
 
   return (
     <motion.div
-      className="feedback-section"
+      className="feedback-section" id="vos-avis"
       variants={fadeIn}
       initial="hidden"
       animate="visible"

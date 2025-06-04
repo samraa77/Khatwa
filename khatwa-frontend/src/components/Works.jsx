@@ -33,7 +33,7 @@ export default function HowItWorksSection() {
   ];
 
   return (
-    <section className="how-it-works-section">
+    <section className="how-it-works-section" id="how-it-works">
       <div className="how-it-works-container">
         <motion.h2
           className="how-it-works-title"

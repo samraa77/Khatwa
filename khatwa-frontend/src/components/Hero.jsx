@@ -1,6 +1,7 @@
 import React from 'react';
 import './Hero.css';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom'; // Import Link
 
 export default function HeroSection() {
   const fadeIn = {
@@ -14,7 +15,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="hero">
+    <section className="hero" id="hero">
       <div className="hero-text">
         <motion.h1
           className="hero-title"
@@ -29,20 +30,24 @@ export default function HeroSection() {
           </span>
         </motion.h1>
         <motion.div className="hero-buttons">
-          <motion.button
-            className="button-86"
-            variants={buttonHover}
-            whileHover="scale"
-          >
-            Commencer
-          </motion.button>
-          <motion.button
-            className="button-86"
-            variants={buttonHover}
-            whileHover="scale"
-          >
-            Découvrir
-          </motion.button>
+          <Link to="/signup">
+            <motion.button
+              className="button-86"
+              variants={buttonHover}
+              whileHover="scale"
+            >
+              Commencer
+            </motion.button>
+          </Link>
+          <Link to="/signin">
+            <motion.button
+              className="button-86"
+              variants={buttonHover}
+              whileHover="scale"
+            >
+              Découvrir
+            </motion.button>
+          </Link>
         </motion.div>
       </div>
       <div className="hero-image">

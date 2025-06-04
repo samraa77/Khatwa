@@ -1,11 +1,19 @@
 // Navbar.jsx
 import React, { useState } from 'react';
 import './navbar.css';
-import { FaBars, FaGlobe, FaSun, FaMoon } from 'react-icons/fa'; // Exemple avec React Icons
+import { FaBars, FaGlobe, FaSun, FaMoon } from 'react-icons/fa';
 
 export default function Navbar({ darkMode, setDarkMode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [showLang, setShowLang] = useState(false);
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsOpen(false); // Close the mobile menu after clicking (optional)
+    }
+  };
 
   return (
     <header className={`navbar ${darkMode ? 'dark' : ''}`}>
@@ -18,11 +26,26 @@ export default function Navbar({ darkMode, setDarkMode }) {
 
         {/* Liens centrés */}
         <nav className={`navbar-center ${isOpen ? 'open' : ''}`}>
-          <a href="#hero">Accueil</a>
-          <a href="#about">À propos</a>
-          <a href="#how-it-works">Fonctionnement</a>
-          <a href="#vos-avis">Vos avis</a>
-          <a href="#contact">Contact</a>
+          <a href="#hero" onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('hero');
+            }}>Accueil</a>
+          <a href="#about" onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('about');
+            }}>À propos</a>
+          <a href="#how-it-works" onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('how-it-works');
+            }}>Fonctionnement</a>
+          <a href="#vos-avis" onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('vos-avis');
+            }}>Vos avis</a>
+          <a href="#contact" onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('contact');
+            }}>Contact</a>
         </nav>
 
         {/* Icônes à droite */}
@@ -41,6 +64,7 @@ export default function Navbar({ darkMode, setDarkMode }) {
             </ul>
           )}
         </div>
+
         {/* Menu burger pour mobile */}
         <div className="navbar-toggle" onClick={() => setIsOpen(!isOpen)}>
           <FaBars className="icon-colored" />

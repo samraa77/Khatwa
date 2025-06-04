@@ -53,7 +53,7 @@ export default function AboutSection() {
   };
 
   return (
-    <section className="about-section">
+    <section className="about-section" id="about">
       <div className="about-content">
         <div className="about-header">
           <motion.h2
