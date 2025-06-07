@@ -25,24 +25,21 @@ export default function ContactSection() {
       <h2>Envie de nous parler ?</h2>
       <p>Remplissez le formulaire et notre équipe vous répondra sous 24h.</p>
     </div>
-    <form class="contact-form">
-      <div class="input-group">
-        <label for="name">Nom complet</label>
-        <input type="text" id="name" placeholder="Entrez votre nom" />
-      </div>
-      <div class="input-group">
-        <label for="email">Adresse email</label>
-        <input type="email" id="email" placeholder="exemple@khatwa.com" />
-      </div>
-      <div class="input-group">
-        <label for="subject">Objet</label>
-        <input type="text" id="subject" placeholder="Sujet du message" />
-      </div>
-      <div class="input-group">
-        <label for="message">Message</label>
-        <textarea id="message" placeholder="Décrivez votre demande..."></textarea>
-      </div>
-      <motion.button
+     <form >           
+            <div className="name-inputs">
+              <input type="text" name="prenom" placeholder="Prénom"  required />
+              <input type="text" name="nom" placeholder="Nom"  required />
+            </div>
+            <div className="age-country-inputs">
+              <input type="text" name="text" placeholder="objectif" required />
+              <input type="email" name="email" placeholder="email" required />
+
+            </div>
+            <div class="input-group">
+                  <label for="message">Message</label>
+                  <textarea id="message" placeholder="Décrivez votre demande..."></textarea>
+                </div>         
+              <motion.button
         type="submit"
         class="btn-submit"
         variants={buttonHover}
@@ -50,7 +47,7 @@ export default function ContactSection() {
       >
         Envoyer le message
       </motion.button>
-    </form>
+          </form>
   </motion.div>
 </section>
   );
