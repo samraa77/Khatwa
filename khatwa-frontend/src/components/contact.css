@@ -31,22 +31,22 @@
   font-size: 1rem;
 }
 
-form {
+.contact {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
 }
 
-.name-inputs,
-.age-country-inputs {
+.nameInputs,
+.infoInputs {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
-.name-inputs input,
-.age-country-inputs input,
-.input-group textarea {
+.nameInputs input,
+.infoInputs input,
+.group textarea {
   flex: 1;
   padding: 0.9rem 1.1rem;
   border: 2px solid #e5e7eb;
@@ -55,27 +55,27 @@ form {
   transition: border 0.3s ease;
 }
 
-.name-inputs input:focus,
-.age-country-inputs input:focus,
+.nameInputs input:focus,
+.infoInputs input:focus,
 textarea:focus {
   border-color: #7c3aed;
   outline: none;
   box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
 }
 
-.input-group label {
+.group label {
   font-weight: 600;
   margin-bottom: 0.4rem;
   color: #4b5563;
 }
 
-.input-group textarea {
+.group textarea {
   width: 100%;
   min-height: 130px;
   resize: vertical;
 }
 
-.btn-submit {
+.btn{
   background-color: #7c3aed;
   color: white;
   font-weight: bold;
@@ -87,14 +87,14 @@ textarea:focus {
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.btn-submit:hover {
+.btn:hover {
   background-color: #5b21b6;
   transform: scale(1.03);
 }
 
 @media (max-width: 600px) {
-  .name-inputs,
-  .age-country-inputs {
+  .nameInputs,
+  .infoInputs {
     flex-direction: column;
   }
 
