@@ -14,7 +14,7 @@
 }
 
 .loading-logo {
-  width: 400px; /* Adjust the size as needed */
+  width: 100px; /* Adjust the size as needed */
   margin-bottom: 20px;
   filter: brightness(0) invert(1);
   animation: fadeInOut 2s ease-in-out infinite; /* Apply the animation */

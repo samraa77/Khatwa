@@ -30,22 +30,22 @@ export default function HeroSection() {
           </span>
         </motion.h1>
         <motion.div className="hero-buttons">
-          <Link to="/signup">
+          <a href="#about">
             <motion.button
               className="button-86"
               variants={buttonHover}
               whileHover="scale"
             >
-              Commencer
+              En savoir plus
             </motion.button>
-          </Link>
-          <Link to="/signin">
+          </a>
+           <Link to="/signup">
             <motion.button
-              className="button-86"
+              className="button-89"
               variants={buttonHover}
               whileHover="scale"
             >
-              Découvrir
+              L'essayer ?
             </motion.button>
           </Link>
         </motion.div>
