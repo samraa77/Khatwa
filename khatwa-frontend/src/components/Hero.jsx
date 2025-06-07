@@ -24,7 +24,7 @@ export default function HeroSection() {
           animate="visible"
           style={{ originX: 0 }}
         >
-          KHATWA <br /> chaque objectif <br /> commence par un
+          KHATWA <br /> chaque objectif <br /> commence par un 
           <span role="img" aria-label="rocket">
             🚀
           </span>
