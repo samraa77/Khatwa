@@ -15,7 +15,7 @@
   width: 45%; /* Adjust as needed for layout */
   min-width: 100px;
   margin-bottom: 20px;
-  background-color: #fff;
+  background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 20px;
@@ -158,5 +158,5 @@
   font-size: 1.5em;
   color: #9e15ff;
   text-align: start;
-  margin-bottom: 20px;
+  padding: 2rem;
 }

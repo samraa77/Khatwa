@@ -9,7 +9,6 @@
 /* Contenu principal */
 .layout-content {
   flex: 1;
-  padding: 2rem;
   background-color: #f5f3ff;
   overflow-y: auto;
 }
