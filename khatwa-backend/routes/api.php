@@ -10,6 +10,7 @@ use Illuminate\Auth\Events\Verified;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\ChallengeController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\DashboardController;
 
 
 
@@ -72,3 +73,5 @@ Route::middleware('auth:api')->post('/notifications/{id}/read', function ($id) {
 
 //dashboard 
 Route::middleware('auth:api')->get('/dashboard-data', [\App\Http\Controllers\DashboardController::class, 'index']);
+// AI
+Route::middleware('auth:api')->post('/ai/chat', [\App\Http\Controllers\AIChatController::class, 'chat']);

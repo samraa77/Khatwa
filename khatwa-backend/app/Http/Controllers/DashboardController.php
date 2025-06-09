@@ -11,7 +11,15 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
+        $user = auth('api')->user();
+
+        if (!$user) {
+            return response()->json(['message' => 'Non authentifié.'], 401);
+        }
+
+        if (!$user->hasVerifiedEmail()) {
+            return response()->json(['message' => 'Email non vérifié.'], 403);
+        }
 
         // 1. Progression du challenge en cours
         $activeChallenge = Challenge::where('user_id', $user->id)
@@ -28,7 +36,7 @@ class DashboardController extends Controller
             $totalDays = $days->count();
             $completedDays = $days->where('is_completed', true)->count();
 
-            // Streak = jours consécutifs complétés (de 1 à N)
+            // Streak = jours consécutifs complétés consécutivement (Jour 1 -> Jour N)
             foreach ($days as $day) {
                 if ($day->is_completed) {
                     $currentStreak++;
@@ -47,18 +55,30 @@ class DashboardController extends Controller
         $abandoned = Challenge::where('user_id', $user->id)->where('status', 'abandonne')->count();
 
         $distribution = [
-            'completed' => ['value' => $completed, 'percentage' => $totalChallenges ? round(($completed / $totalChallenges) * 100) : 0, 'color' => '#2ecc71'],
-            'inProgress' => ['value' => $inProgress, 'percentage' => $totalChallenges ? round(($inProgress / $totalChallenges) * 100) : 0, 'color' => '#3498db'],
-            'abandoned' => ['value' => $abandoned, 'percentage' => $totalChallenges ? round(($abandoned / $totalChallenges) * 100) : 0, 'color' => '#e74c3c'],
+            'completed' => [
+                'value' => $completed,
+                'percentage' => $totalChallenges ? round(($completed / $totalChallenges) * 100) : 0,
+                'color' => '#2ecc71'
+            ],
+            'inProgress' => [
+                'value' => $inProgress,
+                'percentage' => $totalChallenges ? round(($inProgress / $totalChallenges) * 100) : 0,
+                'color' => '#3498db'
+            ],
+            'abandoned' => [
+                'value' => $abandoned,
+                'percentage' => $totalChallenges ? round(($abandoned / $totalChallenges) * 100) : 0,
+                'color' => '#e74c3c'
+            ],
             'total' => $totalChallenges,
-            'successRate' => $totalChallenges ? round(($completed / $totalChallenges) * 100) : 0,
+            'successRate' => $totalChallenges ? round(($completed / $totalChallenges) * 100) : 0
         ];
 
-        // 3. Durée des défis
+        // 3. Distribution des durées de challenges (champ 'duree' au lieu de 'duration_days')
         $durations = [30, 60, 90];
         $durationStats = [];
         foreach ($durations as $duration) {
-            $count = Challenge::where('user_id', $user->id)->where('duration_days', $duration)->count();
+            $count = Challenge::where('user_id', $user->id)->where('duree', $duration)->count();
             $durationStats[] = [
                 'duration' => $duration . ' J',
                 'challenges' => $count,
@@ -71,7 +91,7 @@ class DashboardController extends Controller
             ];
         }
 
-        // 4. Discipline quotidienne (score fictif de démonstration ici)
+        // 4. Discipline quotidienne (exemple statique)
         $dailyDiscipline = [
             ['day' => 'L', 'score' => 80],
             ['day' => 'M', 'score' => 75],
