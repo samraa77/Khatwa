@@ -11,9 +11,13 @@ const EmailVerificationModal = ({ onClose }) => {
         </div>
         <h2>Vérifiez votre adresse e-mail</h2>
         <p>
-          Un lien de vérification a été envoyé à <b>votre adresse e-mail</b>. Cliquez sur le lien pour compléter la vérification.
-          N'oubliez pas de <b>vérifier votre dossier spam</b> si vous ne le trouvez pas.
-        </p>
+            Un lien de vérification a été envoyé à <b>votre adresse e-mail</b>. <br />
+            <a href="https://mail.google.com" target="_blank" rel="noopener noreferrer" className="mail-link">
+              Ouvrir ma boîte Gmail
+            </a><br />
+            N'oubliez pas de <b>vérifier votre dossier spam</b> si vous ne le trouvez pas.
+          </p>
+
         <button className="return-to-site-button" onClick={onClose}>
           Fermer
         </button>

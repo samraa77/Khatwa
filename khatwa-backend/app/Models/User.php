@@ -2,25 +2,25 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\CanResetPassword;
+use Illuminate\Auth\Passwords\CanResetPassword as CanResetPasswordTrait;
+use App\Notifications\CustomResetPassword;
 
-class User extends Authenticatable implements JWTSubject, MustVerifyEmail
+class User extends Authenticatable implements JWTSubject, MustVerifyEmail, CanResetPassword
 {
-    use Notifiable;
+    use Notifiable, CanResetPasswordTrait;
 
     protected $fillable = [
-        'nom',
         'prenom',
-        'email',
-        'password',
+        'nom',
         'age',
+        'email',
         'pays',
-        'language',
-        'opinion',
+        'password',
     ];
 
     protected $hidden = [
@@ -28,9 +28,11 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
         'remember_token',
     ];
 
-    /**
-     * JWT methods
-     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    // Méthodes JWT
     public function getJWTIdentifier()
     {
         return $this->getKey();
@@ -40,12 +42,8 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
     {
         return [];
     }
-
-    /**
-     * Hash password automatically
-     */
-    public function setPasswordAttribute($value)
+    public function sendPasswordResetNotification($token)
     {
-        $this->attributes['password'] = Hash::make($value);
+        $this->notify(new CustomResetPassword($token, $this->email));
     }
 }

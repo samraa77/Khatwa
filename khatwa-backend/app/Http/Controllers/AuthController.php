@@ -6,62 +6,78 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
 
 class AuthController extends Controller
 {
+    /**
+     * Inscription d’un utilisateur + envoi du lien de vérification
+     */
     public function register(Request $request)
     {
-      $validator = Validator::make($request->all(), [
-    'nom'      => 'required|string|max:255',
-    'prenom'   => 'required|string|max:255',
-    'email'    => 'required|string|email|max:255|unique:users',
-    'password' => 'required|string|min:6',
-    'age'      => 'required|integer',
-    'pays'     => 'required|string',
-    'language' => 'required|string',
-    'opinion'  => 'nullable|string',
-]);
+        $validator = Validator::make($request->all(), [
+            'prenom' => 'required|string|max:255',
+            'nom' => 'required|string|max:255',
+            'age' => 'required|integer',
+            'pays' => 'required|string|max:255',
+            'email' => 'required|string|email|unique:users',
+            'password' => 'required|string|min:6',
+        ]);
 
-if ($validator->fails()) {
-    return response()->json($validator->errors(), 422);
-}
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
 
-$user = User::create([
-    'nom'      => $request->nom,
-    'prenom'   => $request->prenom,
-    'email'    => $request->email,
-    'password' => $request->password,
-    'age'      => $request->age,
-    'pays'     => $request->pays,
-    'language' => $request->language,
-    'opinion'  => $request->opinion,
-]);
+        $user = User::create([
+            'prenom' => $request->prenom,
+            'nom' => $request->nom,
+            'age' => $request->age,
+            'pays' => $request->pays,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
 
-         $user->sendEmailVerificationNotification();
+        // Déclenche l'événement d'enregistrement pour envoyer le lien de vérification
+        event(new Registered($user));
 
-
-        return response()->json(['message' => 'Inscription réussie', 'user' => $user], 201);
+        return response()->json(['message' => 'Inscription réussie. Vérifiez votre email.']);
     }
 
+    /**
+     * Connexion utilisateur
+     */
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
 
-        if (!$token = JWTAuth::attempt($credentials)) {
-            return response()->json(['error' => 'Identifiants invalides'], 401);
+        if (!$token = auth('api')->attempt($credentials)) {
+            return response()->json(['error' => 'Email ou mot de passe incorrect'], 401);
         }
 
-        return response()->json(['token' => $token]);
+        if (!auth()->user()->hasVerifiedEmail()) {
+            return response()->json(['error' => 'Email non vérifié.'], 403);
+        }
+
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'user' => auth()->user()
+        ]);
     }
 
+    /**
+     * Déconnexion
+     */
     public function logout()
     {
-        JWTAuth::invalidate(JWTAuth::getToken());
-
-        return response()->json(['message' => 'Déconnexion réussie']);
+        auth('api')->logout();
+        return response()->json(['message' => 'Déconnecté avec succès']);
     }
 
+    /**
+     * Données du profil utilisateur
+     */
     public function profile()
     {
         return response()->json(auth()->user());

@@ -54,6 +54,20 @@
   cursor: pointer;
   transition: background 0.3s ease;
 }
+.mail-link {
+  color: #7c3aed;
+  font-weight: 500;
+  text-decoration: underline;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 0.5rem;
+  text-decoration: none;
+
+}
+
+.mail-link:hover {
+  color: #5b21b6;
+}
 
 .return-to-site-button:hover {
   background-color: #5b21b6;
@@ -69,3 +83,4 @@
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
