@@ -1,44 +1,30 @@
-// components/Sidebar.jsx
 import React from "react";
 import { Home, Mail, Eye, Monitor, User, LogOut, Settings, Bell } from "lucide-react";
 import "./sidebar.css";
-import { Link, useNavigate } from 'react-router-dom'; // Import Link and useNavigate
+import { Link, useNavigate } from 'react-router-dom'; // Import Link et useNavigate
 
 const navItems = [
-  { icon: <Home size={18} />, label: "Dashboard", path: "/Layout" },
-  { icon: <Mail size={18} />, label: "Messages", path: "/messages" },
-  { icon: <Eye size={18} />, label: "Analytics", path: "/analytics" },
-  { icon: <Monitor size={18} />, label: "Monitoring", path: "/monitoring" },
-  { icon: <Settings size={18} />, label: "Settings", path: "/Settings" },
+  { icon: <Home size={18} />, label: "Tableau de Bord", path: "/Layout" },
+  { icon: <Mail size={18} />, label: "Nouveau Défi", path: "/Layout/Nouveau-defi" },
+  { icon: <Eye size={18} />, label: "Calendrier Défi", path: "/Layout/Calendrier-défi" },
+  { icon: <Monitor size={18} />, label: "List Défi", path: "/Layout/List-défi" },
+  { icon: <Settings size={18} />, label: "Paramètres", path: "/Layout/Paramètres" },
 ];
 
 const Sidebar = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate(); // Initialiser useNavigate
 
-  // Function to handle logout
+  // Fonction pour déconnecter
   const handleLogout = () => {
-    // Communicate with BDD to perform disconnect action
-    // Example:
-    // api.logout().then(() => {
-    //   navigate('/landingpage');
-    // });
-    console.log('Logout clicked'); // example
-    navigate('/landingpage'); // Navigate to landing page
+    console.log('Logout clicked'); // Exemple
+    // Ajoutez votre logique de déconnexion si nécessaire, puis redirigez
+    navigate('/');
   };
 
-  // Function to fetch notifications (example)
+  // Fonction pour récupérer les notifications (exemple)
   const fetchNotifications = async () => {
-    // try {
-    //   const response = await api.getNotifications();
-    //   // Process notifications from the database
-    //   console.log('Notifications:', response.data);
-    //   return response.data.length; // Return the number of notifications
-    // } catch (error) {
-    //   console.error('Error fetching notifications:', error);
-    //   return 0; // Return 0 in case of error
-    // }
-    console.log('fetchNotifications  clicked'); // example
-    return 9
+    console.log('fetchNotifications clicked');
+    return 9; // exemple
   };
 
   //const [notificationCount, setNotificationCount] = React.useState(0);
@@ -57,15 +43,16 @@ const Sidebar = () => {
 
         <div className="sidebar-icons">
           <div className="icon-wrapper">
-            <Link to="/profile" style={{color:"#ffffff"}}> {/* Wrap User icon with Link */}
+            {/* Lien vers le profil */}
+            <Link to="/profile" style={{ color: "#ffffff" }}> 
               <User size={20} />
             </Link>
           </div>
           <div className="icon-wrapper notification">
             <Bell size={20} />
-            <span className="notif-count">9</span>{/*{notificationCount}*/}
+            <span className="notif-count">9</span>
           </div>
-          <div className="icon-wrapper" onClick={handleLogout}> {/* Add onClick handler */}
+          <div className="icon-wrapper" onClick={handleLogout}> {/* Bouton pour déconnexion */}
             <LogOut size={20} />
           </div>
         </div>
@@ -74,11 +61,12 @@ const Sidebar = () => {
       <ul className="sidebar-nav">
         {navItems.map((item, index) => (
           <li key={index}>
-            <a href={item.path} className="sidebar-link">
+            {/* Remplacement par Link */}
+            <Link to={item.path} className="sidebar-link">
               <span className="icon">{item.icon}</span>
               <span className="label">{item.label}</span>
               {item.badge && <span className="badge">{item.badge}</span>}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
