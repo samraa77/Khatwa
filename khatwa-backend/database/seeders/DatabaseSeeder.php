@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +13,46 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        DB::table('notifications')->insert([
+            [
+                'id' => (string) Str::uuid(),
+                'type' => 'App\Notifications\NewChallengeNotification',
+                'notifiable_type' => 'App\Models\User',
+                'notifiable_id' => 1,
+                'data' => json_encode([
+                    'titre' => 'Challenge test 1',
+                    'message' => 'Notification de test 1'
+                ]),
+                'read_at' => null,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'id' => (string) Str::uuid(),
+                'type' => 'App\Notifications\NewChallengeNotification',
+                'notifiable_type' => 'App\Models\User',
+                'notifiable_id' => 1,
+                'data' => json_encode([
+                    'titre' => 'Challenge test 2',
+                    'message' => 'Notification de test 2'
+                ]),
+                'read_at' => null,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'id' => (string) Str::uuid(),
+                'type' => 'App\Notifications\NewChallengeNotification',
+                'notifiable_type' => 'App\Models\User',
+                'notifiable_id' => 1,
+                'data' => json_encode([
+                    'titre' => 'Challenge test 3',
+                    'message' => 'Notification de test 3'
+                ]),
+                'read_at' => null,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
         ]);
     }
 }
