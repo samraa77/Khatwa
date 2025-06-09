@@ -9,12 +9,9 @@ const EmailVerificationModal = ({ onClose }) => {
         <div className="email-icon">
           <FaEnvelope />
         </div>
-        <h2>Vérifiez votre adresse e-mail</h2>
         <p>
-            Un lien de vérification a été envoyé à <b>votre adresse e-mail</b>. <br />
-            <a href="https://mail.google.com" target="_blank" rel="noopener noreferrer" className="mail-link">
-              Ouvrir ma boîte Gmail
-            </a><br />
+            Un lien de vérification a été envoyé .<a href="https://mail.google.com" target="_blank" rel="noopener noreferrer" className="mail-link">
+            Vérifiez votre adresse e-mail</a><br />
             N'oubliez pas de <b>vérifier votre dossier spam</b> si vous ne le trouvez pas.
           </p>
 

@@ -26,19 +26,19 @@ const AuthForm = () => {
     password: ''
   });
 
-  const [countries, setCountries] = useState([]);
+  // const [countries, setCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios.get('https://api.countrylayer.com/v2/all?access_key=7534a478f9fe9d346823b87b3fc7010f')
-      .then(res => {
-        const sorted = res.data.sort((a, b) => a.name.localeCompare(b.name));
-        setCountries(sorted);
-      })
-      .catch(err => console.error('Erreur lors du chargement des pays :', err));
-  }, []);
+  // useEffect(() => {
+  //   axios.get('https://api.countrylayer.com/v2/all?access_key=7534a478f9fe9d346823b87b3fc7010f')
+  //     .then(res => {
+  //       const sorted = res.data.sort((a, b) => a.name.localeCompare(b.name));
+  //       setCountries(sorted);
+  //     })
+  //     .catch(err => console.error('Erreur lors du chargement des pays :', err));
+  // }, []);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -111,10 +111,11 @@ const AuthForm = () => {
             <div className="age-country-inputs">
               <input type="number" name="age" placeholder="Âge" value={formData.age} onChange={handleChange} required />
               <select value={selectedCountry} onChange={(e) => setSelectedCountry(e.target.value)} required>
-                <option value="">Pays</option>
-                {countries.map(country => (
-                  <option key={country.alpha2Code} value={country.name}>{country.name}</option>
-                ))}
+                <option value="">morroco</option>
+                {/* {countries.map(country => (
+                  // <option key={country.alpha2Code} value={country.name}>{country.name}</option>
+                ))}                 */} <option>moroco</option> 
+
               </select>
             </div>
             <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
