@@ -78,7 +78,8 @@ const AuthForm = () => {
     const res = await axios.post('http://127.0.0.1:8000/api/login', loginData);
     localStorage.setItem('token', res.data.access_token);
     setIsLoggedIn(true);
-    navigate('/dashboard'); // ✅ ici uniquement si succès
+    navigate('/Layout');
+ // ✅ ici uniquement si succès
   } catch (err) {
     if (err.response?.status === 403) {
       alert("Votre email n’est pas encore vérifié.");
