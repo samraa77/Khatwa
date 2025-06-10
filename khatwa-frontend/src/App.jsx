@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard";
 import Layout from "./components/Layout";
 import NewChallenge from "./pages/NewChallenge";
 import ProfileForm from "./pages/ProfileForm";
+import SettingsPage from "./pages/SettingsPage";
 
 export default function App() {
   return (
@@ -24,6 +25,8 @@ export default function App() {
           <Route path="Nouveau-defi" element={<NewChallenge />} />
 
           <Route path="Profile" element={<ProfileForm />} />
+          <Route path="Parametres" element={<SettingsPage />} />
+
 
         </Route> 
       </Routes>
