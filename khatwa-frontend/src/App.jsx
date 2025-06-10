@@ -8,6 +8,7 @@ import ResetPassword from './components/ResetPassword';
 import Dashboard from "./pages/Dashboard";
 import Layout from "./components/Layout";
 import NewChallenge from "./pages/NewChallenge";
+import ProfileForm from "./pages/ProfileForm";
 
 export default function App() {
   return (
@@ -21,6 +22,9 @@ export default function App() {
         <Route path="/Layout" element={<Layout />}>   
           <Route index element={<Dashboard />} />
           <Route path="Nouveau-defi" element={<NewChallenge />} />
+
+          <Route path="Profile" element={<ProfileForm />} />
+
         </Route> 
       </Routes>
     </Router>

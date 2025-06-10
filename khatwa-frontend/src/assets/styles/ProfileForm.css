@@ -1,0 +1,165 @@
+/* Spacing entre les sections */
+.card , .card {
+  margin-top: 20px;
+  width: 99.5%;
+}
+
+/* Header de la card */
+.card-header {
+  padding: 16px;
+  border-bottom: 1px solid #ddd;
+}
+.card-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Contenu de la card */
+.card-content {
+  padding: 16px;
+}
+
+/* Section pour profil */
+.profile-section {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Zone placeholder pour image */
+.image-placeholder {
+  width: 128px;
+  height: 128px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fafafa;
+  position: relative;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.no-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  text-align: center;
+}
+
+.upload-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+/* Bouton d'upload personnalisé */
+.button-outline {
+  padding: 8px 16px;
+  border: 2px solid #333;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.button-outline:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Bouton de suppression */
+.link-button {
+  background: none;
+  border: none;
+  color: #333;
+  margin-top: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+
+.link-button:hover {
+  color: #000;
+}
+
+/* Info section */
+.image-info {
+  margin-top: 20px;
+}
+.info-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* Form styles */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Grille pour premier et dernier noms */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Groupes de formulaire */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+.form-group label {
+  margin-bottom: 4px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: border-color 0.2s;
+}
+.input:focus {
+  border-color: #666;
+  outline: none;
+}
+
+/* Actions du formulaire (bouton) */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+.button-primary {
+  padding: 12px 24px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+.button-primary:hover {
+  background-color: #45a049;
+}

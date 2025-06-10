@@ -77,7 +77,7 @@ const Sidebar = () => {
         <div className="sidebar-icons">  
           {/* Profile */}  
           <div className="icon-wrapper">  
-            <Link to="/profile" style={{ color: "#ffffff" }}><User size={20} /></Link>  
+            <Link to="/Layout/Profile" style={{ color: "#ffffff" }}><User size={20} /></Link>  
           </div>  
 
           {/* Notifications */}  
