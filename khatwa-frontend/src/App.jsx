@@ -10,6 +10,7 @@ import Layout from "./components/Layout";
 import NewChallenge from "./pages/NewChallenge";
 import ProfileForm from "./pages/ProfileForm";
 import SettingsPage from "./pages/SettingsPage";
+import ListDefi from "./pages/List-defi";
 
 export default function App() {
   return (
@@ -26,6 +27,8 @@ export default function App() {
 
           <Route path="Profile" element={<ProfileForm />} />
           <Route path="Parametres" element={<SettingsPage />} />
+          <Route path="List-defi" element={<ListDefi />} />
+
 
 
         </Route> 
