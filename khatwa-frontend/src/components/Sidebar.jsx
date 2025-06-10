@@ -6,7 +6,7 @@ import "./Sidebar.css";
 const navItems = [  
   { icon: <Home size={18} />, label: "Tableau de Bord", path: "/Layout" },  
   { icon: <Mail size={18} />, label: "Nouveau Défi", path: "/Layout/Nouveau-defi" },  
-  { icon: <Eye size={18} />, label: "Calendrier Défi", path: "/Layout/Calendrier-défi" },  
+  { icon: <Eye size={18} />, label: "Calendrier Défi", path: "/Layout/Calendrier-defi" },  
   { icon: <Monitor size={18} />, label: "List Défi", path: "/Layout/List-defi" },  
   { icon: <Settings size={18} />, label: "Paramètres", path: "/Layout/Parametres" },  
 ];  
