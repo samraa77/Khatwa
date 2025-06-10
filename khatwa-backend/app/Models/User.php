@@ -21,6 +21,7 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail, CanRe
         'email',
         'pays',
         'password',
+        'photo'
     ];
 
     protected $hidden = [

@@ -32,11 +32,13 @@ class DashboardController extends Controller
         $currentStreak = 0;
 
         if ($activeChallenge) {
-            $days = ChallengeDay::where('challenge_id', $activeChallenge->id)->orderBy('day_number')->get();
+            $days = ChallengeDay::where('challenge_id', $activeChallenge->id)
+                ->orderBy('day_number')
+                ->get();
+
             $totalDays = $days->count();
             $completedDays = $days->where('is_completed', true)->count();
 
-            // Streak = jours consécutifs complétés consécutivement (Jour 1 -> Jour N)
             foreach ($days as $day) {
                 if ($day->is_completed) {
                     $currentStreak++;
@@ -74,11 +76,14 @@ class DashboardController extends Controller
             'successRate' => $totalChallenges ? round(($completed / $totalChallenges) * 100) : 0
         ];
 
-        // 3. Distribution des durées de challenges (champ 'duree' au lieu de 'duration_days')
+        // 3. Distribution des durées de challenges
         $durations = [30, 60, 90];
         $durationStats = [];
         foreach ($durations as $duration) {
-            $count = Challenge::where('user_id', $user->id)->where('duree', $duration)->count();
+            $count = Challenge::where('user_id', $user->id)
+                ->where('duree', $duration)
+                ->count();
+
             $durationStats[] = [
                 'duration' => $duration . ' J',
                 'challenges' => $count,

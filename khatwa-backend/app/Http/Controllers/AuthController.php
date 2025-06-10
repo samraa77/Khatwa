@@ -38,7 +38,6 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // Déclenche l'événement d'enregistrement pour envoyer le lien de vérification
         event(new Registered($user));
 
         return response()->json(['message' => 'Inscription réussie. Vérifiez votre email.']);
@@ -82,4 +81,47 @@ class AuthController extends Controller
     {
         return response()->json(auth()->user());
     }
+
+    /**
+     * Mise à jour du profil utilisateur
+     */
+   public function updateProfile(Request $request)
+{
+    $user = auth()->user();
+
+    $data = $request->validate([
+        'prenom' => 'nullable|string|max:255',
+        'nom' => 'nullable|string|max:255',
+        'age' => 'nullable|integer',
+        'pays' => 'nullable|string|max:255',
+        'email' => 'nullable|email|unique:users,email,' . $user->id,
+        'password' => 'nullable|string|min:6',
+        'image' => 'nullable|image|max:2048',
+        'remove_photo' => 'nullable|boolean',
+    ]);
+
+    if (isset($data['password'])) {
+        $data['password'] = Hash::make($data['password']);
+    }
+
+    if ($request->hasFile('image')) {
+        if ($user->photo) {
+            \Storage::disk('public')->delete($user->photo);
+        }
+        $data['photo'] = $request->file('image')->store('profiles', 'public');
+    } elseif ($request->input('remove_photo') == '1') {
+        if ($user->photo) {
+            \Storage::disk('public')->delete($user->photo);
+        }
+        $data['photo'] = null;
+    }
+
+    $user->update($data);
+
+    return response()->json([
+        'message' => 'Profil mis à jour avec succès.',
+        'user' => $user
+    ]);
+}
+
 }

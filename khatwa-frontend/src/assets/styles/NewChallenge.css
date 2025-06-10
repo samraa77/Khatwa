@@ -207,3 +207,52 @@
   background: rgba(255,255,255,0.3);
   color: #fff;
 }
+.bubble.user {
+  background-color: #d1e7dd;
+  align-self: flex-end;
+  border-radius: 15px 15px 0 15px;
+}
+
+.bubble.ai {
+  background-color: #f0f0f0;
+  align-self: flex-start;
+  border-radius: 15px 15px 15px 0;
+}
+.messages-area {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  gap: 12px;
+  background: transparent;
+}
+
+.bubble {
+  max-width: 80%;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  word-wrap: break-word;
+  animation: appear 0.3s ease-in-out;
+}
+
+.bubble.user {
+  align-self: flex-end;
+  background-color: #22c3c3;
+  color: white;
+  border-radius: 18px 18px 0 18px;
+}
+
+.bubble.ai {
+  align-self: flex-start;
+  background-color: rgba(255,255,255,0.9);
+  color: #333;
+  border-radius: 18px 18px 18px 0;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}

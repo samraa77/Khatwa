@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\ChallengeController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AIChatController;
 
 
 
@@ -26,6 +27,7 @@ Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, '__
 // ✅ Routes protégées (auth:api)
 Route::middleware('auth:api')->group(function () {
     Route::get('/profile', [AuthController::class, 'profile']);
+    Route::middleware('auth:api')->post('/profile/update', [AuthController::class, 'updateProfile']);
     Route::post('/logout', [AuthController::class, 'logout']);
 
     // ✅ Renvoi du lien de vérification
@@ -74,4 +76,7 @@ Route::middleware('auth:api')->post('/notifications/{id}/read', function ($id) {
 //dashboard 
 Route::middleware('auth:api')->get('/dashboard-data', [\App\Http\Controllers\DashboardController::class, 'index']);
 // AI
-Route::middleware('auth:api')->post('/ai/chat', [\App\Http\Controllers\AIChatController::class, 'chat']);
+
+Route::post('/ai/chat', [AIChatController::class, 'chat']);
+Route::post('/ai/questionnaire', [AIChatController::class, 'generateQuestionnaire']);
+Route::post('/ai/generate-plan', [AIChatController::class, 'generateChallengePlan']);
